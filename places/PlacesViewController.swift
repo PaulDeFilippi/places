@@ -90,7 +90,7 @@ class PlacesViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 
                 // ****** Need to review the actual json response in the console to understand the layers of the branches ******
                 
-                if  let jsonObject = jsonData as? [String:Any],
+                if  let jsonObject = jsonData as? [String: Any],
                     let response   = jsonObject["response"] as? [String: Any],
                     let venues     = response["venues"] as? [[String: Any]] {
                     
@@ -111,6 +111,13 @@ class PlacesViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                         }
                     }
                 }
+                
+                self.places.sort(by: { (item1, item2) -> Bool in
+                    let name1 = item1["name"] as! String
+                    let name2 = item2["name"] as! String
+                    
+                    return name1 < name2
+                })
                 
                 print(self.places)
                 
