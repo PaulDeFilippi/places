@@ -9,52 +9,44 @@
 import UIKit
 import MapKit
 
-class PlacesViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class PlacesViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var mapView: MKMapView?
     @IBOutlet var tableView: UITableView?
     
-    var locationManager: CLLocationManager?
+    
     
     var places = [[String: Any]]()
     
     var isQueryPending = false
     
+    let locationManager = LocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        locationManager = CLLocationManager()
-        locationManager?.requestWhenInUseAuthorization()
-        
-        locationManager?.delegate = self
-        
-        locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager!.distanceFilter = 50.0
-        
-        locationManager?.startUpdatingLocation()
         
         mapView?.delegate = self
         
         tableView?.delegate = self
         tableView?.dataSource = self
+        
+        locationManager.start { (location) in
+            self.centerMapView(on: location)
+            self.queryFoursquare(with: location)
+        }
+        
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func centerMapView(on location: CLLocation) {
         guard mapView != nil else { return }
-        guard let newLocation = locations.last else { return }
         
-        let region = MKCoordinateRegion(center: newLocation.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
         let adjustedRegion = mapView!.regionThatFits(region)
         
         mapView!.setRegion(adjustedRegion, animated: true)
-        
-        print(adjustedRegion)
-        
-        queryFoursquare(location: newLocation)
-        
     }
     
-    func queryFoursquare(location: CLLocation) {
+    func queryFoursquare(with location: CLLocation) {
         if isQueryPending == true {
             return
         }
