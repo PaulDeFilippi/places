@@ -13,6 +13,7 @@
 		4F27B7D922E286FB00ADA026 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F27B7D822E286FB00ADA026 /* Assets.xcassets */; };
 		4F27B7DC22E286FB00ADA026 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F27B7DA22E286FB00ADA026 /* LaunchScreen.storyboard */; };
 		4FBD874222FB63410064A5C7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD874122FB63410064A5C7 /* LocationManager.swift */; };
+		4FBD874422FBAA570064A5C7 /* FoursquareAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD874322FBAA570064A5C7 /* FoursquareAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4F27B7DB22E286FB00ADA026 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F27B7DD22E286FB00ADA026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FBD874122FB63410064A5C7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		4FBD874322FBAA570064A5C7 /* FoursquareAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				4F27B7DA22E286FB00ADA026 /* LaunchScreen.storyboard */,
 				4F27B7DD22E286FB00ADA026 /* Info.plist */,
 				4FBD874122FB63410064A5C7 /* LocationManager.swift */,
+				4FBD874322FBAA570064A5C7 /* FoursquareAPI.swift */,
 			);
 			path = places;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F27B7D422E286F800ADA026 /* PlacesViewController.swift in Sources */,
+				4FBD874422FBAA570064A5C7 /* FoursquareAPI.swift in Sources */,
 				4F27B7D222E286F800ADA026 /* AppDelegate.swift in Sources */,
 				4FBD874222FB63410064A5C7 /* LocationManager.swift in Sources */,
 			);
